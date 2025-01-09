@@ -14,6 +14,6 @@ app.set('view engine','ejs')
 
 app.use('/',require('./routes/main'))
 
-app.listen(port, ()=>{
+app.listen(5000, ()=>{
     console.log(`the server is running on ${port}`)
 })
