@@ -2,8 +2,12 @@ require("dotenv").config();
 const express = require("express")
 const port = process.env.PORT
 const expresslayout = require("express-ejs-layouts")
+const connectDB = require('./config/db')
 
 const app = express()
+
+// Database connection
+connectDB()
 
 app.use(express.static('public'))
 //templating engine
