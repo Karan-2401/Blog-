@@ -13,12 +13,12 @@ const Post = new scheme(
             required:true
         },
         createdAt:{
-            type: Date.now,
-            default: true
+            type: Date,
+            default: Date.now
         },
         updateAt:{
-            type: Date.now,
-            default: true
+            type: Date,
+            default: Date.now
         },
 
     }

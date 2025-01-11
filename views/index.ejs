@@ -9,11 +9,15 @@
     <div class=" w-10/12 md:w-6/12 flex flex-col gap-4 justify-center items-start">
         <h1 style="font-size: 25px;font-weight: 500;">Latest Post</h1>
         <ul class="w-full">
-            <li class="flex w-full justify-between items-center">
-                <h1 style="font-size: 20px;font-weight: 500; color: #3b3a34;">Post Title</h1>
-                <span style="font-size: 15px; color: #3b3a34;">Date</span>
-            </li>
+            <% Data.forEach(post => { %>
+             <a href="/post/<%= post._id %>">
+                <li class="flex w-full justify-between items-center py-4 border-b hover:bg-gray-200 hover:cursor-pointer ease-in-out duration-4000">
+                    <h1 style="font-size: 20px;font-weight: 500; color: #3b3a34;background-color: transparent;"><%= post.title %></h1>
+                    <span style="font-size: 15px; color: #3b3a34;background-color: transparent;"><%= post.createdAt.toDateString() %></span>
+                </li>
+             </a>   
+            <% }) %>
         </ul>
-
+        <button class="pt-4" style="font-size: 14px; font-weight: 500;"><i class="fa fa-angle-left" aria-hidden="true"></i> View Older Posts</button>
     </div>
 </div>
