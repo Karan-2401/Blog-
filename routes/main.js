@@ -7,8 +7,14 @@ router.get("/", async(req, res) => {
         title: "Nodejs Essential work",
         description: "The node js is good with mongodb."
     }
+    let perPage = 10;
+    let pageNumber=req.query.page || 1;
     try{
-        const Data = await createPost.find();
+        const Data = await createPost.aggregate([
+            {$sort:{_id:-1}},
+            {$skip: perPage*pageNumber - perPage},
+            {$limit:perPage}
+        ]);
         res.render('index', {locals,Data})
     }catch(error){
         console.log(error)

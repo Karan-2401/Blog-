@@ -8,7 +8,7 @@
 <div class="w-full flex justify-center">
     <div class=" w-10/12 md:w-6/12 flex flex-col gap-4 justify-center items-start">
         <h1 style="font-size: 25px;font-weight: 500;">Latest Post</h1>
-        <ul class="w-full">
+        <ul class="w-full overflow-y-scroll" style="height: 500px;">
             <% Data.forEach(post => { %>
              <a href="/post/<%= post._id %>">
                 <li class="flex w-full justify-between items-center py-4 border-b hover:bg-gray-200 hover:cursor-pointer ease-in-out duration-4000">
