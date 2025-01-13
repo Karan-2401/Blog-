@@ -42,8 +42,11 @@ router.post('/search', async(req,res)=>{
     const locals = {
         title:"Search"
     }
-    console.log(req.body.search)
-    res.render('search')
+    const id = req.body.search;
+    console.log(id)
+    const data =await createPost.find({title:id})
+    console.log("id data"+data)
+    res.render('search',{data:data})
 
    }catch(error){
     console.log(error)
