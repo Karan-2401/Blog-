@@ -9,6 +9,9 @@ const app = express()
 // Database connection
 connectDB()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended:false }))
+
 app.use(express.static('public'))
 //templating engine
 app.use(expresslayout)

@@ -3,19 +3,20 @@ const router = express.Router()
 const createPost = require('../models/post')
 
 router.get("/", async(req, res) => {
-    const locals = {
-        title: "Nodejs Essential work",
-        description: "The node js is good with mongodb."
-    }
+   
     let perPage = 10;
     let pageNumber=req.query.page || 1;
     try{
+        
         const Data = await createPost.aggregate([
             {$sort:{_id:1}},
             {$skip: perPage*pageNumber - perPage},
             {$limit:perPage}
         ]);
-
+        const locals = {
+            title: "Nodejs Essential work",
+            description: "The node js is good with mongodb."
+        }
         const count = await createPost.countDocuments();
         console.log(`number:`+count)
 
@@ -36,12 +37,24 @@ router.get("/", async(req, res) => {
     }
 })
 
+router.post('/search', async(req,res)=>{
+   try{
+    const locals = {
+        title:"Search"
+    }
+    console.log(req.body.search)
+    res.render('search')
+
+   }catch(error){
+    console.log(error)
+   }
+})
 
 router.get('/post/:id', async(req,res)=>{
     const data = req.params.id;
     try{
        const data1 = await createPost.findOne({_id:data})
-        res.render('post',{data2:data1})
+        res.render('post',{locals:data1})
     }catch(error){
         console.log(error)
     }

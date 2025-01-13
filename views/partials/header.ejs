@@ -5,10 +5,11 @@
     <li style="font-size: 14px;background-color: transparent; font-weight: 400;" class="hover:cursor-pointer hover:text-blue-600">About</li>
     <li style="font-size: 14px;background-color: transparent; font-weight: 400;" class="hover:cursor-pointer hover:text-blue-600">Contact</li>
 </ul>
-<div class="col-span-2 sm:col-span-2 md:col-span-1 flex gap-0 order-3 md:order-3 justify-center" style="background-color: transparent;">
-    <form action="/search" method="post">
-        <input type="search" placeholder="Search Here" class="h-full px-2 outline-none rounded-l" style="border: 2px solid black;border-right: none;font-size: 14px;">
+<div class="col-span-2 sm:col-span-2 md:col-span-1  order-3 md:order-3" style="background-color: transparent;">
+    <form action="/search" method="post" class="flex gap-0 justify-center items-center" style="background-color: transparent;">
+        <input type="search" placeholder="Search Here" class="h-full px-2 py-2 outline-none rounded-l" style="border: 2px solid black;border-right: none;font-size: 14px;" name="search">
+        <button class="bg-black text-white px-2 py-2 rounded-r h-full border-black border border-t-0"><i class="fa fa-search" aria-hidden="true" style="background-color: transparent;"></i></button>
     </form>
-    <button class="bg-black text-white px-2 rounded-r"><i class="fa fa-search" aria-hidden="true" style="background-color: transparent;"></i></button>
+    
 </div>
 </header>
