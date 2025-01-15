@@ -2,11 +2,24 @@
     <h1 style="font-size: 25px;font-weight: 500;">Log In</h1>
     <form action="/admin" method="post" class="flex flex-col shadow-md w-10/12 sm:w-8/12 lg:w-5/12 gap-4 p-4 rounded bg-white">
         <label for="username" class="bg-white"><b class="bg-white">Username</b></label>
-        <input id="username" type="text" placeholder="Enter Username..." class="border border-black p-2 rounded bg-white">
+        <input id="username" type="text" placeholder="Enter Username..." class="border border-black p-2 rounded bg-white" name="username">
     
         <label for="password" class="bg-white"><b class="bg-white">Password</b></label>
-        <input id="password" type="password" placeholder="Enter Password..." class="border border-black rounded p-2 bg-white">
+        <input id="password" type="password" placeholder="Enter Password..." class="border border-black rounded p-2 bg-white" name="password">
     
         <input type="submit" name="Login" value="Log In" class="border-black border rounded w-4/12 sm:w-3/12 lg:w-2/12 hover:cursor-pointer font-bold hover:bg-black hover:text-white ease-in duration-300" style="padding: 2px 0px;">
+    </form>
+</div>
+
+<div class="flex justify-center items-center flex-col gap-4">
+    <h1 style="font-size: 25px;font-weight: 500;">Register</h1>
+    <form action="/register" method="post" class="flex flex-col shadow-md w-10/12 sm:w-8/12 lg:w-5/12 gap-4 p-4 rounded bg-white">
+        <label for="username" class="bg-white"><b class="bg-white">Username</b></label>
+        <input id="username" type="text" placeholder="Enter Username..." class="border border-black p-2 rounded bg-white" name="username">
+    
+        <label for="password" class="bg-white"><b class="bg-white">Password</b></label>
+        <input id="password" type="password" placeholder="Enter Password..." class="border border-black rounded p-2 bg-white" name="password">
+    
+        <input type="submit" name="Login" value="Register" class="border-black border rounded w-4/12 sm:w-3/12 lg:w-2/12 hover:cursor-pointer font-bold hover:bg-black hover:text-white ease-in duration-300" style="padding: 2px 0px;">
     </form>
 </div>
