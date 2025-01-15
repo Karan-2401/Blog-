@@ -20,6 +20,7 @@ app.set('view engine','ejs')
 //end templating engine
 
 app.use('/',require('./routes/main'))
+app.use('/',require('./routes/admin'))
 
 app.listen(5000, ()=>{
     console.log(`the server is running on ${port}`)

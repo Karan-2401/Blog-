@@ -43,10 +43,17 @@ router.post('/search', async(req,res)=>{
         title:"Search"
     }
     const id = req.body.search;
-    console.log(id)
-    const data =await createPost.find({title:id})
+    const id2 = id.replace(/^[a-zA-Z0-9]/g,"")
+    const data =await createPost.find({
+        $or:[
+            {title:{$regex : new RegExp(id2,"i")}},
+            {body:{$regex : new RegExp(id2,"i")}},
+            
+        ]
+    }
+    )
     console.log("id data"+data)
-    res.render('search',{data:data})
+    res.render('search',{Data:data})
 
    }catch(error){
     console.log(error)
