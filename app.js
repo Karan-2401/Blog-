@@ -3,6 +3,9 @@ const express = require("express")
 const port = process.env.PORT
 const expresslayout = require("express-ejs-layouts")
 const connectDB = require('./config/db')
+const cookieParser = require('cookie-parser')
+const mongoStore = require('connect-mongo');
+const session = require("express-session");
 
 const app = express()
 
@@ -11,6 +14,17 @@ connectDB()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
+app.use(cookieParser())
+
+app.use(session({
+    secret:"keyboard cat",
+    resave:false,
+    saveUninitialized:true,
+    store:mongoStore.create({
+        mongoUrl:process.env.MONGODB_URL
+    })
+}))
+//cookie:{maxAge: new Date (Date.now()+ (3600000))}
 
 app.use(express.static('public'))
 //templating engine
