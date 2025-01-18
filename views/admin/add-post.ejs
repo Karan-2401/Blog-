@@ -1,0 +1,20 @@
+<div class="flex justify-center">
+    <div class=" w-10/12 sm:w-8/12 flex flex-col gap-4 pt-4">
+        <a href="/dashboard" class="hover:text-blue-600"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            Back</a>
+        <h3 class="text-2xl font-semibold">Add New Post</h3>
+        <form action="/add-post" method="post" class="flex flex-col gap-4 w-full"
+            style="background-color: transparent;">
+            <label for="title" style="background-color: transparent;"><b>Title</b></label>
+            <input id="title" type="text" placeholder="Enter Title..." class="border border-black rounded p-2 bg-white"
+                name="title">
+            <label for="body" style="background-color: transparent;"><b>Content</label>
+            <textarea id="body" type="text" placeholder="Enter Content..."
+                class="border border-black rounded p-2 bg-white w-full h-64 sm:h-80" name="body">
+                </textarea>
+            <input type="submit" name="Add" value="Add"
+                class="border-black border rounded w-4/12 sm:w-3/12 lg:w-2/12 hover:cursor-pointer font-bold hover:bg-black hover:text-white ease-in duration-300"
+                style="padding: 2px 0px;">
+        </form>
+    </div>
+</div>

@@ -69,7 +69,7 @@ router.get('/dashboard',authMiddleware,async(req,res)=>{
         const perPage = 10;
         const Page = req.query.page || 1;
         const Data = await createPost.aggregate([
-            {$sort:{_id:1}},
+            {$sort:{_id:-1}},
             {$skip:perPage * Page - perPage},
             {$limit:perPage}
         ])
@@ -104,7 +104,26 @@ router.post('/register',async(req,res)=>{
 })
 
 router.get('/add-post',authMiddleware,async(req,res)=>{
-    res.render('admin/add-post',{layout:layout})
+    try {
+        res.render('admin/add-post')
+    } catch (error) {
+        console.log(error)        
+    }
+})
+
+router.post('/add-post',authMiddleware,async(req,res)=>{
+    try {
+        const {title,body} =req.body;
+        const t = String(title);
+        const b = String(body)
+        const data = await createPost.insertMany([{
+            title:t,
+            body:b,
+        }])
+        res.render('admin/add-post',{layout:layout})
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router

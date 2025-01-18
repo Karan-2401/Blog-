@@ -9,7 +9,7 @@ router.get("/", async(req, res) => {
     try{
         
         const Data = await createPost.aggregate([
-            {$sort:{_id:1}},
+            {$sort:{_id:-1}},
             {$skip: perPage*pageNumber - perPage},
             {$limit:perPage}
         ]);
