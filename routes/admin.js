@@ -46,7 +46,7 @@ router.post('/admin',async(req,res)=>{
         if(user){
             const pass = await bcrypt.compare(password,user.password) 
             if(pass){
-                const token = jwt.sign({userId:user.id},jwtsecret)
+                const token = await jwt.sign({userId:user.id},jwtsecret)
                 res.cookie('token',token,{httpOnly:true})
                 res.redirect('/dashboard')
             }else{
@@ -66,7 +66,19 @@ router.get('/dashboard',authMiddleware,async(req,res)=>{
         const locals = {
             title:"Dashboard"
         }
-        res.render('admin/dashboard')
+        const perPage = 10;
+        const Page = req.query.page || 1;
+        const Data = await createPost.aggregate([
+            {$sort:{_id:1}},
+            {$skip:perPage * Page - perPage},
+            {$limit:perPage}
+        ])
+        const newPage = parseInt(Page)+1;
+        const posts = await createPost.countDocuments();
+        console.log(posts)
+        const condition = newPage <= Math.ceil(posts/perPage)
+        console.log(condition)
+        res.render('admin/dashboard',{locals,Data:Data,newPage:newPage,condition:condition ? null : 1,layout:layout})
     } catch (error) {
         console.log(error)
     }
@@ -89,6 +101,10 @@ router.post('/register',async(req,res)=>{
          res.status(404).json({msg:"error"})
     }
 
+})
+
+router.get('/add-post',authMiddleware,async(req,res)=>{
+    res.render('admin/add-post',{layout:layout})
 })
 
 module.exports = router

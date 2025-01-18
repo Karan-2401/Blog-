@@ -1,1 +1,25 @@
-dashboard
+<div class="w-screen flex flex-col items-center justify-center">
+    <div class=" w-10/12 sm:w-8/12 flex justify-between pt-4" >
+        <h1 style="font-size: 25px;font-weight: 500;">Your Posts</h1>
+        <button class="" style="font-size: 14px; font-weight: 500;"><a href="/add-post" class="hover:text-blue-600">+Add post</a></button>
+    </div>
+    <div class=" w-10/12 sm:w-8/12 flex flex-col gap-4 justify-between pt-4" >
+        <ul class="w-full overflow-y-scroll" style="height: 400px;">
+            <% Data.forEach(post => { %>
+                <li class="flex w-full justify-between items-center py-4 px-2 border-b hover:bg-gray-200 hover:cursor-pointer ease-in-out duration-4000">
+                    <a style="background-color: transparent;" href="/post/<%= post._id %>">
+                        <h1 style="font-size: 18px;font-weight: 500; color: #3b3a34;background-color: transparent;"><%= post.title %></h1>
+                    </a>
+                    <div class="flex gap-4" style="background-color: transparent;">                        
+                        <button style="background-color: transparent;"><a style="background-color: transparent;" href="/edit-post/<%= post._id %>"><i style="background-color: transparent;" class="fa fa-pencil text-green-600 hover:text-green-400" aria-hidden="true"></i></a></button>
+                        <button style="background-color: transparent;"><i class="fa fa-trash text-red-600 hover:text-red-400" style="background-color: transparent;" aria-hidden="true" ></i></button>
+                    </div>
+                </li>  
+            <% }) %>
+        </ul>
+        <% if (condition == null) { %>
+            <button class="pt-4 self-start" style="font-size: 14px; font-weight: 500;"><a href="/dashboard/?page=<%= newPage %>" class="hover:text-blue-600"><i class="fa fa-angle-left" aria-hidden="true"></i> Older Posts</a></button>
+        <% } %>
+       
+    </div>
+</div>
