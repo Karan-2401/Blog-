@@ -31,6 +31,7 @@ router.get("/", async(req, res) => {
             Data,
             newPage:newPage,
             cheack :cheack ? null : 1,
+            cookie:req.cookies.token
         })
     }catch(error){
         console.log(error)
@@ -64,7 +65,7 @@ router.get('/post/:id', async(req,res)=>{
     const data = req.params.id;
     try{
        const data1 = await createPost.findOne({_id:data})
-        res.render('post',{locals:data1})
+        res.render('post',{locals:data1,cookie:req.cookies.token})
     }catch(error){
         console.log(error)
     }

@@ -30,7 +30,8 @@ router.get("/admin", async(req,res)=>{
             title:"admin"
         }
         res.render('admin/index',{locals:locals,
-            layout:layout
+            layout:layout,
+            cookie:req.cookies.token
         })
     }catch(error){
         console.log(error)
@@ -78,7 +79,7 @@ router.get('/dashboard',authMiddleware,async(req,res)=>{
         console.log(posts)
         const condition = newPage <= Math.ceil(posts/perPage)
         console.log(condition)
-        res.render('admin/dashboard',{locals,Data:Data,newPage:newPage,condition:condition ? null : 1,layout:layout})
+        res.render('admin/dashboard',{locals,Data:Data,newPage:newPage,condition:condition ? null : 1,layout:layout,cookie:req.cookies.token})
     } catch (error) {
         console.log(error)
     }
@@ -105,7 +106,7 @@ router.post('/register',async(req,res)=>{
 
 router.get('/add-post',authMiddleware,async(req,res)=>{
     try {
-        res.render('admin/add-post')
+        res.render('admin/add-post',{cookie:req.cookies.token})
     } catch (error) {
         console.log(error)        
     }
@@ -138,6 +139,7 @@ router.get('/edit-post/:id',authMiddleware,async(req,res)=>{
         Data:data,
         locals:locals,
         layout:layout,
+        cookie:req.cookies.token
     })
 })
 
