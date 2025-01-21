@@ -12,7 +12,10 @@
                     </a>
                     <div class="flex gap-4" style="background-color: transparent;">                        
                         <button style="background-color: transparent;"><a style="background-color: transparent;" href="/edit-post/<%= post._id %>"><i style="background-color: transparent;" class="fa fa-pencil text-green-600 hover:text-green-400" aria-hidden="true"></i></a></button>
-                        <button style="background-color: transparent;"><i class="fa fa-trash text-red-600 hover:text-red-400" style="background-color: transparent;" aria-hidden="true" ></i></button>
+                        <form action="/delete-post/<%= post._id %>?_method=DELETE" method="post">
+                            <button style="background-color: transparent;"><i class="fa fa-trash text-red-600 hover:text-red-400" style="background-color: transparent;" aria-hidden="true" ></i></button>
+                        </form>
+                        
                     </div>
                 </li>  
             <% }) %>
