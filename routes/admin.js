@@ -94,7 +94,7 @@ router.post('/register',async(req,res)=>{
         const hashedPassword = await bcrypt.hash(password,10);
         try {
             const user = await User.create({username,password:hashedPassword})
-            res.status(200).send(user)
+            res.redirect('/admin')
         } catch (error) {
             res.status(404).json({msg:"error"})
         }
