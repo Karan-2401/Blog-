@@ -54,7 +54,7 @@ router.post('/search', async(req,res)=>{
     }
     )
     console.log("id data"+data)
-    res.render('search',{Data:data})
+    res.render('search',{Data:data,cookie:req.cookies.token})
 
    }catch(error){
     console.log(error)

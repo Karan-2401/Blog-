@@ -121,7 +121,7 @@ router.post('/add-post',authMiddleware,async(req,res)=>{
             title:t,
             body:b,
         }])
-        res.render('admin/add-post',{layout:layout})
+        res.render('admin/add-post',{layout:layout,cookie:req.cookies.token})
     } catch (error) {
         console.log(error)
     }
