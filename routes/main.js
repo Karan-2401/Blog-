@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const createPost = require('../models/post')
+const nodemailer = require('nodemailer')
 
 router.get("/", async(req, res) => {
    
@@ -73,6 +74,48 @@ router.get('/post/:id', async(req,res)=>{
 
 router.get("/about", (req, res) => {
     res.render('about')
+})
+
+router.get('/contact',async(req,res)=>{
+    const locals = {
+        title:"Contact"
+    }
+    try {
+        res.render('contact',{locals:locals,cookie:req.cookies.token})
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.post('/send-message',async(req,res)=>{
+try {
+    const {email,message} = req.body;
+    console.log(email,message)
+    const transporter = nodemailer.createTransport({
+        service:"gmail",
+        auth:{
+            user:'karan342772@gmail.com',
+            pass:"jnqk ctvn qacz mpau"
+        }
+    })
+
+    const mail = {
+        from:"karan342772@gmail.com",
+        to:"karan342772@gmail.com",
+        subject:"user message",
+        text:`email : ${email}
+        and message : ${message} `
+    }
+    try {
+        await transporter.sendMail(mail)
+    res.redirect('contact')
+    } catch (error) {
+        console.log(error)
+    }
+    
+} catch (error) {
+    
+}
 })
 
 module.exports = router

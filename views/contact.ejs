@@ -1,0 +1,20 @@
+<div class="flex justify-center">
+    <div class=" w-10/12 sm:w-8/12 flex flex-col gap-4 pt-4">
+        <a href="/" class="hover:text-blue-600"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            Back</a>
+        <h3 class="text-2xl font-semibold">Send message to us</h3>
+        <form action="/send-message" method="post" class="flex flex-col gap-4 w-full"
+            style="background-color: transparent;">
+            <label for="email" style="background-color: transparent;"><b>Your Email</b></label>
+            <input id="email" type="email" placeholder="Enter your email..." class="border border-black rounded p-2 bg-white"
+                name="email">
+            <label for="body" style="background-color: transparent;"><b>Your Message</label>
+            <textarea id="body" type="text" placeholder="Enter Content..."
+                class="border border-black rounded p-2 bg-white w-full h-64 sm:h-80" name="message">
+                </textarea>
+            <input type="submit" name="Send" value="Send"
+                class="border-black border rounded w-4/12 sm:w-3/12 lg:w-2/12 hover:cursor-pointer font-bold hover:bg-black hover:text-white ease-in duration-300"
+                style="padding: 2px 0px;">
+        </form>
+    </div>
+</div>
