@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express")
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 const expresslayout = require("express-ejs-layouts")
 const connectDB = require('./config/db')
 const cookieParser = require('cookie-parser')
