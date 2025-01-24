@@ -73,7 +73,10 @@ router.get('/post/:id', async(req,res)=>{
 })
 
 router.get("/about", (req, res) => {
-    res.render('about')
+    const locals = {
+        title:"About Me"
+    }
+    res.render('about',{locals:locals,cookie:req.cookies.token})
 })
 
 router.get('/contact',async(req,res)=>{
