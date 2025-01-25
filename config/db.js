@@ -19,7 +19,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       tlsAllowInvalidCertificates: false, // Ensure certificates are validated
-      tlsInsecure: false,
+    
       ssl: true,
       tls: true,
     tlsCAFile: '/path/to/ca.pem'
