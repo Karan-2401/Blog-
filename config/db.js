@@ -20,9 +20,10 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       tlsAllowInvalidCertificates: false, // Ensure certificates are validated
       tlsInsecure: false,
-      ssl: false
-                 // Reject invalid certs
-  });
+      ssl: false,
+      tls: true,
+    tlsCAFile: '/path/to/ca.pem'
+      });
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);

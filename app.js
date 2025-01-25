@@ -40,6 +40,6 @@ app.set('view engine','ejs')
 app.use('/',require('./routes/main'))
 app.use('/',require('./routes/admin'))
 
-app.listen(port, ()=>{
+app.listen(port,HOST, ()=>{
     console.log(`the server is running on ${port}`)
 })
