@@ -9,10 +9,8 @@ const session = require("express-session");
 const methodOverride = require('method-override')
 const HOST = 'o.o.o.o';
 const app = express()
+const http = require('http')
 
-const server = http.createServer(app);
-server.keepAliveTimeout = 120000;
-server.headersTimeout = 120000;
 
 // Database connection
 connectDB()
@@ -42,6 +40,6 @@ app.set('view engine','ejs')
 app.use('/',require('./routes/main'))
 app.use('/',require('./routes/admin'))
 
-app.listen(port,HOST, ()=>{
+app.listen(port, ()=>{
     console.log(`the server is running on ${port}`)
 })
