@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const mongoStore = require('connect-mongo');
 const session = require("express-session");
 const methodOverride = require('method-override')
-
+const HOST = 'o.o.o.o';
 const app = express()
 
 // Database connection
@@ -38,6 +38,6 @@ app.set('view engine','ejs')
 app.use('/',require('./routes/main'))
 app.use('/',require('./routes/admin'))
 
-app.listen(port, ()=>{
+app.listen(port,HOST, ()=>{
     console.log(`the server is running on ${port}`)
 })
