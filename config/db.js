@@ -20,7 +20,7 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       tlsAllowInvalidCertificates: false, // Ensure certificates are validated
       tlsInsecure: false,
-      ssl: false,
+      ssl: true,
       tls: true,
     tlsCAFile: '/path/to/ca.pem'
       });
