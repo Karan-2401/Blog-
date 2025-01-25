@@ -22,7 +22,7 @@ const connectDB = async () => {
     
       ssl: true,
       tls: true,
-    tlsCAFile: '/path/to/ca.pem'
+
       });
     console.log('MongoDB connected successfully');
   } catch (error) {
