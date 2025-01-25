@@ -10,6 +10,10 @@ const methodOverride = require('method-override')
 const HOST = 'o.o.o.o';
 const app = express()
 
+const server = http.createServer(app);
+server.keepAliveTimeout = 120000;
+server.headersTimeout = 120000;
+
 // Database connection
 connectDB()
 
